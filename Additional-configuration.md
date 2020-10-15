@@ -153,16 +153,14 @@ augroup END
 
 " let g:lightline = {}
 " let g:lightline.component_function = {
-"   \ 'server_status': 'scnvim#statusline#server_status',
-"   \ }
-"
-" function! s:set_sclang_lightline_stl()
-"   let g:lightline.active = {
-"   \ 'left':  [ [ 'mode', 'paste' ],
-"   \          [ 'readonly', 'filename', 'modified' ] ],
-"   \ 'right': [ [ 'lineinfo' ],
-"   \            [ 'percent' ],
-"   \            [ 'server_status'] ]
-"   \ }
-" endfunction
+"       \ 'server_status': 'scnvim#statusline#server_status',
+"       \ }
+" 
+" let g:lightline.active = {
+"       \ 'left':  [ [ 'mode', 'paste' ],
+"       \          [ 'readonly', 'filename', 'modified' ] ],
+"       \ 'right': [ [ 'lineinfo' ],
+"       \            [ 'percent' ],
+"       \            [ 'server_status'] ]
+"       \ }
 ```
