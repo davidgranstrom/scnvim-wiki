@@ -12,10 +12,45 @@ If you write or install new classes you will need to run this command again to u
 
 Call `:SCNvimTags` to generate the snippet definitions.
 
-You will also need a snippet engine like [UltiSnips](https://github.com/SirVer/ultisnips) in order to use the snippets. To let UltiSnips know about the snippets, put the following line in your init.vim:
+You will also need a snippet engine like [UltiSnips](https://github.com/SirVer/ultisnips) or [snippets.nvim](https://github.com/norcalli/snippets.nvim) in order to use the snippets. UltiSnips is the default snippet engine.
+
+To let UltiSnips know about the snippets, put the following line in your init.vim:
 
 ```vim
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data']
+```
+
+To use snippets.nvim as the snippet engine:
+
+* packer.nvim example:
+```lua
+use {
+    'davidgranstrom/scnvim',
+    config = function ()
+        vim.g.scnvim_snippet_format = "snippets.nvim"
+    end
+}
+```
+To let snippets.nvim know about the snippets add this to the snippet lua file that your load in `init.lua`:
+Here just showing the gist of it. `snippets.nvim` is really powerful and to show a full config would be a bit to much.
+```lua
+local S = require'snippets'
+local snippets = S.snippets
+package.path = package.path .. ";/home/<USER>/.local/share/nvim/site/pack/packer/start/scnvim/scnvim-data/scnvim_snippets.lua"
+snippets = {
+    supercollider = require'scnvim_snippets'
+}
+```
+or if you are using your own supercollider snippets you will have to combine those together like so:
+
+```lua
+for k,v in pairs(require'scnvim_snippets') do snippets.supercollider[k] = v end
+S.snippets = snippets
+```
+
+* vim:
+```vim
+let g:scnvim_snippet_format = "snippets.nvim"
 ```
 
 ## Status line widgets
