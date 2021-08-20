@@ -7,7 +7,7 @@ SCNvim exposes some really handy functions that allows you to execute SuperColli
 
 ```lua
 -- Play a sine wave
-local code = "play{SinOsc.ar(110)}"
+local code = [[play{SinOsc.ar(110)}]]
 require'scnvim'.send(expr)
 ```
 
@@ -21,7 +21,7 @@ An example that asks the server how many output channels it's got and prints it 
 
 ```lua
 -- Code to be evaluated
-local supercollider_code = "s.options.numOutputBusChannels"
+local supercollider_code = [[s.options.numOutputBusChannels]]
 
 -- This function will be called with the return value of the supercollider code above
 local callback = function (returnVal) print("SuperCollider server has " .. returnVal .. " channels") end
