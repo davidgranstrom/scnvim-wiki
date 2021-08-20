@@ -32,7 +32,7 @@ require'scnvim'.eval(supercollider_code, callback)
 
 ```lua
 -- SuperCollider code. Note: double quotes need to be escaped like below
-local sc_code = "\"play{SinOsc.ar(110, mul: 0.25}\""
+local sc_code = [[play{SinOsc.ar(110) * 0.1]]
 
 -- Normal mode mapping
 local opts = { nowait = true, noremap = true, silent = false }
