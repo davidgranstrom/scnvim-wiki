@@ -8,7 +8,7 @@ SCNvim exposes some really handy functions that allows you to execute SuperColli
 ```lua
 -- Play a sine wave
 local code = [[play{SinOsc.ar(110)}]]
-require'scnvim'.send(expr)
+require'scnvim'.send(code)
 ```
 
 `send_silent` is a function equivalent to the above but it does not post to the post window when called.
