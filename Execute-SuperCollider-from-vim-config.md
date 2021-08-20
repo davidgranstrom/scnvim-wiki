@@ -1,4 +1,4 @@
-# Execute SuperCollider code from lua code in NeoVim config 
+# Using scnvim from lua
 
 SCNvim exposes some really handy functions that allows you to execute SuperCollider code from keymappings or your settings to create your own hacks. 
 
