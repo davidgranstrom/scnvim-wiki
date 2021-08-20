@@ -37,6 +37,25 @@ local sc_code = [[play{SinOsc.ar(110) * 0.1]]
 -- Normal mode mapping
 local opts = { nowait = true, noremap = true, silent = false }
 local lhs = "<F11>" -- The key to be mapped
-local rhs = "<cmd> lua require'scnvim'.send(" .. sc_code .. ")" -- The thing that will be executed by said key
+-- The thing that will be executed by said key:
+local rhs = string.format("<cmd> lua require'scnvim'.send('%s')<cr>", sc_code)
+vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
+```
+
+## Mapping multi line expressions
+If you want to easily add multi line code in mappings, you can use `:gsub` like below to clean it up:
+
+```lua
+-- Normal mode mapping
+local opts = { nowait = true, noremap = true, silent = false }
+
+local sc_code = [[
+play {
+  SinOsc.ar(440) * 0.1;
+};
+]]
+local lhs = "<F11>" -- The key to be mapped
+local rhs = string.format("<cmd> lua require'scnvim'.send('%s')<cr>", sc_code:gsub('\n', ''))
+
 vim.api.nvim_buf_set_keymap(0, "n", lhs, rhs, opts)
 ```
